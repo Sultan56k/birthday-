@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Haiqa!</title>
+  <style>
+    /* Base Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      flex-direction: column;
+    }
+
+    .container {
+      position: relative;
+      max-width: 90%;
+      width: 500px;
+    }
+
+    /* Countdown, Cake, Wishes Styling Remain Same */
+    /* ... (keep all original styling here) ... */
+
+    /* Balloon animation */
+    .balloon {
+      position: absolute;
+      bottom: -100px;
+      width: 40px;
+      height: 60px;
+      background-color: red;
+      border-radius: 20px 20px 0 0;
+      animation: rise 8s infinite ease-in;
+    }
+
+    .balloon::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 20px;
+      background-color: #000;
+    }
+
+    @keyframes rise {
+      0% {
+        bottom: -100px;
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      100% {
+        bottom: 120vh;
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .cake {
+        width: 200px;
+        height: 200px;
+      }
+
+      .plate {
+        width: 220px;
+      }
+
+      .cake-bottom {
+        width: 180px;
+        left: 10px;
+      }
+
+      .cake-top, .icing {
+        width: 190px;
+        left: 5px;
+      }
+
+      .birthday-title {
+        font-size: 1.8rem;
+      }
+
+      .message {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Countdown, Cake, and Wishes sections stay unchanged -->
+    <!-- Include balloons here -->
+    <div id="balloons"></div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const balloonContainer = document.getElementById('balloons');
+
+      function createBalloons(count = 20) {
+        const colors = ['#ff4757', '#1e90ff', '#2ed573', '#ffa502', '#eccc68'];
+        for (let i = 0; i < count; i++) {
+          const balloon = document.createElement('div');
+          balloon.className = 'balloon';
+          balloon.style.left = Math.random() * 90 + '%';
+          balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+          balloon.style.animationDelay = Math.random() * 5 + 's';
+          balloonContainer.appendChild(balloon);
+        }
+      }
+
+      createBalloons();
+
+      // You already have the countdown, cake, wishes, confetti and sound logic in place
+      // Keep using that below this line as is
+
+    });
+  </script>
+   <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            transition: background 1s ease;
+        }
+
+        /* Countdown Section */
+        .countdown-container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            max-width: 90%;
+            width: 500px;
+            position: absolute;
+            transition: opacity 1s ease;
+        }
+
+        .countdown-container h1 {
+            color: #d23669;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .countdown {
+            font-size: 5rem;
+            font-weight: bold;
+            color: #ff4757;
+            margin: 1rem 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .countdown-container p {
+            color: #666;
+            font-size: 1.2rem;
+        }
+
+        /* Cake Section */
+        .cake-container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            max-width: 90%;
+            width: 500px;
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1s ease;
+        }
+
+        .cake {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+        }
+
+        .plate {
+            position: absolute;
+            width: 320px;
+            height: 30px;
+            background: #f1f1f1;
+            border-radius: 50%;
+            bottom: 0;
+            left: -10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cake-bottom {
+            position: absolute;
+            width: 250px;
+            height: 100px;
+            background: #f8bd7f;
+            bottom: 30px;
+            left: 25px;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .cake-top {
+            position: absolute;
+            width: 280px;
+            height: 80px;
+            background: #f5a623;
+            bottom: 130px;
+            left: 10px;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .icing {
+            position: absolute;
+            width: 280px;
+            height: 20px;
+            background: #ffdfd3;
+            bottom: 210px;
+            left: 10px;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .candle {
+            position: absolute;
+            width: 15px;
+            height: 50px;
+            background: #fff;
+            bottom: 230px;
+            left: 142.5px;
+            z-index: 10;
+        }
+
+        .flame {
+            position: absolute;
+            width: 20px;
+            height: 30px;
+            background: #ffef00;
+            border-radius: 50% 50% 20% 20%;
+            bottom: 280px;
+            left: 140px;
+            z-index: 10;
+            animation: flicker 0.5s infinite alternate;
+        }
+
+        .knife {
+            position: absolute;
+            font-size: 40px;
+            bottom: 150px;
+            right: 20px;
+            cursor: pointer;
+            transform: rotate(-45deg);
+            transition: transform 0.3s;
+            z-index: 20;
+        }
+
+        .knife:hover {
+            transform: rotate(-30deg) scale(1.1);
+        }
+
+        .cake-cut {
+            position: absolute;
+            width: 10px;
+            height: 180px;
+            background: rgba(0, 0, 0, 0.1);
+            left: 50%;
+            bottom: 30px;
+            z-index: 5;
+            transform: translateX(-50%);
+            display: none;
+        }
+
+        /* Wishes Section */
+        .wishes-container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            max-width: 90%;
+            width: 600px;
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1s ease;
+        }
+
+        .birthday-title {
+            color: #d23669;
+            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+        }
+
+        .birthday-title span {
+            color: #ff6b81;
+            text-decoration: underline;
+        }
+
+        .message {
+            color: #333;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .message p {
+            margin-bottom: 1rem;
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: #f00;
+            opacity: 0.7;
+            animation: fall linear forwards;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        /* Animations */
+        @keyframes flicker {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        @keyframes countdownPop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 600px) {
+            .countdown {
+                font-size: 3.5rem;
+            }
+            
+            .countdown-container h1, .cake-container h1 {
+                font-size: 1.5rem;
+            }
+            
+            .countdown-container p, .cake-container p {
+                font-size: 1rem;
+            }
+
+            .cake {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .plate {
+                width: 270px;
+            }
+            
+            .cake-bottom {
+                width: 210px;
+                left: 20px;
+            }
+            
+            .cake-top {
+                width: 230px;
+            }
+            
+            .icing {
+                width: 230px;
+            }
+
+            .birthday-title {
+                font-size: 1.8rem;
+            }
+            
+            .message {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Countdown Section -->
+    <div class="countdown-container" id="countdown-container">
+        <h1>Get Ready to Celebrate!</h1>
+        <div class="countdown" id="countdown">10</div>
+        <p>Haiqa's birthday surprise is loading...</p>
+    </div>
+
+    <!-- Cake Section -->
+    <div class="cake-container" id="cake-container">
+        <h1>Cut the Cake for Haiqa!</h1>
+        <div class="cake">
+            <div class="plate"></div>
+            <div class="cake-bottom"></div>
+            <div class="cake-top"></div>
+            <div class="icing"></div>
+            <div class="candle"></div>
+            <div class="flame"></div>
+            <div class="knife" id="knife">🔪</div>
+        </div>
+        <p>Click the knife to cut the cake!</p>
+    </div>
+
+    <!-- Wishes Section -->
+    <div class="wishes-container" id="wishes-container">
+        <h1 class="birthday-title">Happy Birthday <span>Haiqa</span>!</h1>
+        <div class="message">
+            <p>Wishing you a day filled with happiness and a year filled with joy!</p>
+            <p>May all your dreams and wishes come true.</p>
+            <p>Enjoy your special day to the fullest! 🎂🎉</p>
+        </div>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio id="countdownSound" preload="auto">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-arcade-game-jump-coin-216.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="birthdaySound" preload="auto">
+        <source src="https://assets.mixkit.co/music/preview/mixkit-happy-birthday-to-you-528.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="cutSound" preload="auto">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-arcade-game-jump-coin-216.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elements
+            const countdownContainer = document.getElementById('countdown-container');
+            const cakeContainer = document.getElementById('cake-container');
+            const wishesContainer = document.getElementById('wishes-container');
+            const countdownElement = document.getElementById('countdown');
+            const knife = document.getElementById('knife');
+            
+            // Audio elements
+            const countdownSound = document.getElementById('countdownSound');
+            const birthdaySound = document.getElementById('birthdaySound');
+            const cutSound = document.getElementById('cutSound');
+            
+            // Countdown function
+            function startCountdown() {
+                let count = 10;
+                
+                const countdownInterval = setInterval(() => {
+                    countdownElement.textContent = count;
+                    countdownSound.currentTime = 0;
+                    countdownSound.play();
+                    
+                    // Add animation
+                    countdownElement.style.animation = 'none';
+                    void countdownElement.offsetWidth; // Trigger reflow
+                    countdownElement.style.animation = 'countdownPop 0.5s';
+                    
+                    if (count === 0) {
+                        clearInterval(countdownInterval);
+                        showCake();
+                    }
+                    count--;
+                }, 1000);
+            }
+            
+            // Show cake section
+            function showCake() {
+                countdownContainer.style.opacity = '0';
+                countdownContainer.style.pointerEvents = 'none';
+                
+                setTimeout(() => {
+                    cakeContainer.style.opacity = '1';
+                    cakeContainer.style.pointerEvents = 'auto';
+                    document.body.style.background = 'linear-gradient(135deg, #f6d365 0%, #fda085 100%)';
+                }, 1000);
+            }
+            
+            // Show wishes section
+            function showWishes() {
+                cakeContainer.style.opacity = '0';
+                cakeContainer.style.pointerEvents = 'none';
+                
+                setTimeout(() => {
+                    wishesContainer.style.opacity = '1';
+                    wishesContainer.style.pointerEvents = 'auto';
+                    document.body.style.background = 'linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)';
+                    
+                    // Start birthday music
+                    birthdaySound.loop = true;
+                    birthdaySound.play().catch(e => {
+                        // If autoplay is blocked, play on click
+                        document.body.addEventListener('click', function() {
+                            birthdaySound.play();
+                        }, { once: true });
+                    });
+                    
+                    // Create confetti
+                    createConfetti();
+                }, 1000);
+            }
+            
+            // Create confetti
+            function createConfetti() {
+                const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+                
+                for (let i = 0; i < 100; i++) {
+                    setTimeout(() => {
+                        const confetti = document.createElement('div');
+                        confetti.className = 'confetti';
+                        confetti.style.left = Math.random() * 100 + 'vw';
+                        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                        confetti.style.width = Math.random() * 10 + 5 + 'px';
+                        confetti.style.height = Math.random() * 10 + 5 + 'px';
+                        confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
+                        confetti.style.animationDelay = Math.random() * 2 + 's';
+                        document.body.appendChild(confetti);
+                    }, i * 30);
+                }
+            }
+            
+            // Knife click event
+            knife.addEventListener('click', function() {
+                // Play sounds
+                birthdaySound.play();
+                cutSound.play();
+                
+                // Create cake cut effect
+                const cut = document.createElement('div');
+                cut.className = 'cake-cut';
+                document.querySelector('.cake').appendChild(cut);
+                cut.style.display = 'block';
+                
+                // Animate knife
+                knife.style.transform = 'rotate(-45deg) translateX(-150px)';
+                knife.style.transition = 'transform 1s';
+                
+                // Show wishes after delay
+                setTimeout(showWishes, 2000);
+            });
+            
+            // Start the countdown
+            startCountdown();
+            
+            // Enable audio on first click (for browsers that block autoplay)
+            document.body.addEventListener('click', function() {
+                countdownSound.play().catch(e => console.log("Audio play prevented"));
+            }, { once: true });
+        });
+    </script>
+</body>
+</html>
+</body>
+</html>
